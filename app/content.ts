@@ -3,7 +3,7 @@ export type Lang = "en" | "id";
 export const EMAIL = "ifelixivander@gmail.com";
 export const PHONE_DISPLAY = "0819-0261-2828";
 export const PHONE_TEL = "+6281902612828";
-export const LINKEDIN = "https://linkedin.com/in/felixivander-8b7172292";
+export const LINKEDIN = "https://www.linkedin.com/in/felix-ivander-8b7172292";
 export const GITHUB = "https://github.com/FelyksCode";
 export const CV_PATH = "/Felix_Ivander_CV.pdf";
 
