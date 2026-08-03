@@ -24,9 +24,19 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://felixivander.vercel.app"),
   title: "Felix Ivander — Software Engineer",
   description:
     "Final-year Informatics Engineering student at Universitas Multimedia Nusantara building full-stack business applications with Laravel — REST APIs, React/Next.js frontends, Flutter, and ML research in clinical mortality prediction.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Felix Ivander — Software Engineer",
+    description:
+      "Final-year Informatics Engineering student at Universitas Multimedia Nusantara building full-stack business applications with Laravel — REST APIs, React/Next.js frontends, Flutter, and ML research in clinical mortality prediction.",
+    url: "https://felixivander.vercel.app",
+    siteName: "Felix Ivander",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
