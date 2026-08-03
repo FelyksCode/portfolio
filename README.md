@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Felix Ivander — Portfolio
+
+Personal portfolio built as a **system logbook**: a technical, document-style single-page site with an interactive 3D lanyard ID badge.
+
+Live at **https://felixivander.vercel.app**
+
+## Stack
+
+- **Next.js 16** (App Router, Turbopack) + React 19
+- **three.js** + **@react-three/fiber** — 3D badge (lazy-loaded island, not in initial bundle)
+- TypeScript, CSS custom properties (no UI framework)
+
+## Features
+
+- **3D lanyard badge** — drag to move, flip, and spring it around; canvas-drawn card faces (front + back), cloth-strap physics. Falls back to a flat card when WebGL is unavailable or off-screen.
+- **EN / ID language toggle** with persistent preference (no flash of wrong language on load).
+- **Dark / light theme** with system preference detection and manual toggle.
+- Fully static page (prerendered), self-hosted Google Fonts, responsive layout (card hidden on ≤980px).
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The production build is served locally with:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build && npm start
+```
 
-## Learn More
+Lint: `npm run lint`
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `app/page.tsx` — single client page (content comes from the language dictionary)
+- `app/content.ts` — full EN/ID content dictionary + shared constants (email, links, CV path)
+- `app/components/event-badge.tsx` — 3D badge scene (physics, straps, card textures)
+- `app/components/badge-slot.tsx` — lazy badge island + flat fallback
+- `app/components/language-provider.tsx` / `theme-toggle.tsx` — language & theme systems
+- `app/layout.tsx` — fonts, metadata, FOUC-prevention scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pushes to `main` trigger the GitHub Actions workflow (`.github/workflows/deploy.yml`): lint + build, then deploy to **production** on Vercel via `amondnet/vercel-action` (requires the `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` secrets).
