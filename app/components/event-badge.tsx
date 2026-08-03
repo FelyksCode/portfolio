@@ -768,7 +768,7 @@ export default function EventBadge() {
       style={{
         position: "absolute",
         left: "-25%",
-        top: "-25%",
+        top: "-8%",
         width: "150%",
         height: "150%",
         overflow: "visible",

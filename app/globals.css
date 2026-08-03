@@ -736,6 +736,7 @@ a {
   position: relative;
   width: min(430px, 100%);
   aspect-ratio: 320 / 400;
+  margin-bottom: 72px;
 }
 
 .badge-skeleton {
